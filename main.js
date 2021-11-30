@@ -137,7 +137,7 @@ function savePlayers() {
   window.localStorage.setItem("players", JSON.stringify(players))
 }
 function loadPlayers() {
-  let playersData = JSON.parse(window.localStorage.getItem("player"))
+  let playersData = JSON.parse(window.localStorage.getItem("players"))
   if (!playersData){
     players = []
   }else{
