@@ -10,10 +10,11 @@ let inflationRate = 20
 let maxsize = 300
 let highestPopCount = 0
 let currentPopCount = 0
-let gameLength = 5000
+let gameLength = 10000
 let clockId = 0
 let timeRemaining = 0
 let currentPlayer = {}
+
 
 function startGame() {
 
@@ -43,16 +44,24 @@ function inflate(){
   clickCount ++
   height += inflationRate
   width += inflationRate
-  
+  checkBalloonPop()
+  draw()
+}
+
+function checkBalloonPop(){
   if (height >= maxsize){
     console.log("pop the balloon")
+    let balloonElement = document.getElementById("balloon")
+    
+    document.getElementById("pop-sound").play()
+
     currentPopCount++
     height = 0;
     width = 0;
     
   }
-  draw()
 }
+
 
 function draw(){
   let balloonElement = document.getElementById("balloon")
@@ -134,4 +143,8 @@ function loadPlayers() {
   }else{
     players = playersData
   }
-} 
+}
+
+// setInterval(function automaticallyPressPump() {
+//   document.querySelector('.pump').click()
+// }, 50)

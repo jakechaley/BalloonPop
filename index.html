@@ -12,8 +12,8 @@
     />
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"
-      integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
       crossorigin="anonymous"
     />
 
@@ -29,7 +29,7 @@
 
     <main class="container card">
       <form
-        class="d-flex space-between hidden"
+        class="d-flex space-between"
         id="player-form"
         onsubmit="setPlayer(event)"
       >
@@ -43,7 +43,7 @@
         <button type="submit">Ok</button>
       </form>
 
-      <section id="game" class="game">
+      <section id="game" class="game hidden">
         <div class="card bg-dark text-light">
           <div class="d-flex space-between">
             <div>
@@ -57,12 +57,12 @@
           </div>
         </div>
 
-        <div id="main-controls" class="d-flex space-around mt-2 hidden">
+        <div id="main-controls" class="d-flex space-around mt-2">
           <button onclick="changePlayer()">Change Player</button>
           <button id="start-button" onclick="startGame()">START GAME</button>
         </div>
 
-        <div id="game-controls" class="">
+        <div id="game-controls" class="hidden">
           <div>
             <span>Balloons Popped:</span>
             <span id="pop-count">0</span>
@@ -82,6 +82,7 @@
             </div>
 
             <div id="balloon" class="balloon"></div>
+            <audio id="pop-sound" src="pop.wav"></audio>
           </div>
         </div>
       </section>
