@@ -20,6 +20,7 @@ function startGame() {
 
   document.getElementById("game-controls").classList.remove("hidden")
   document.getElementById("main-controls").classList.add("hidden")
+  document.getElementById("scoreboard").classList.add("hidden")
   startClock()
   setTimeout(stopGame, gameLength)
 }
@@ -86,6 +87,7 @@ function stopGame() {
 
   document.getElementById("main-controls").classList.remove("hidden")
   document.getElementById("game-controls").classList.add("hidden")
+  document.getElementById("scoreboard").classList.remove("hidden")
 
   clickCount = 0
   height = 120
@@ -102,6 +104,7 @@ function stopGame() {
 
   stopClock()
   draw()
+  drawScoreboard()
 }
 // #endregion 
 
@@ -126,7 +129,10 @@ form.reset()
 document.getElementById("game").classList.remove("hidden")
 form.classList.add("hidden")
 draw()
+drawnScoreboard()
 }
+
+
 
 function changePlayer(){
   document.getElementById("player-form").classList.remove("hidden")
@@ -144,6 +150,28 @@ function loadPlayers() {
     players = playersData
   }
 }
+
+function drawScoreboard(){
+  let template = ""
+
+  players.sort((p1, p2) => p2.highScore - p1.highScore)
+
+  players.forEach(player => {
+    template += `
+    <div class="d-flex space-between">
+    <span>
+      <i class="fa fa-user"></i>
+      ${player.name}
+    </span>
+    <span>score: ${player.highScore}</span>
+  </div>
+</div>`
+  })
+  document.getElementById("players").innerHTML = template
+}
+
+
+drawScoreboard()
 
 // setInterval(function automaticallyPressPump() {
 //   document.querySelector('.pump').click()
